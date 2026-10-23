@@ -28,3 +28,9 @@ export function assignRequest(id, volunteerName) {
     updatedAt: serverTimestamp(),
   })
 }
+
+export function updateStatus(id, status, notes) {
+  const changes = { status, updatedAt: serverTimestamp() }
+  if (notes) changes.notes = notes
+  return updateDoc(doc(db, 'requests', id), changes)
+}
