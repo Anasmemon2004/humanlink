@@ -65,7 +65,7 @@ export default function RequestHelp() {
         contactPhone: form.contactPhone.trim(),
         notes: form.notes.trim(),
       })
-      navigate(`/confirmation/${id}`)
+      navigate(`/confirmation/${id}`, { state: form })
     } catch (error) {
       console.error('Could not submit help request:', error)
       setSubmitError('Your request could not be submitted. Please check your connection and try again.')

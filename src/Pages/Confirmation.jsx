@@ -1,8 +1,9 @@
 
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 
 export default function Confirmation() {
   const { id } = useParams()
+  const { state } = useLocation()
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-12">
@@ -29,6 +30,22 @@ export default function Confirmation() {
             Keep this ID so you can refer to your request later.
           </p>
         </div>
+        <div className="mt-6 rounded-lg border border-gray-200 bg-white p-4">
+  <h2 className="text-lg font-semibold text-gray-900">
+    Request Summary
+  </h2>
+
+  <div className="mt-3 space-y-2 text-sm text-gray-700">
+    <p><strong>Type:</strong> {state?.type || 'Not available'}</p>
+    <p><strong>Urgency:</strong> {state?.urgency || 'Not available'}</p>
+    <p><strong>Description:</strong> {state?.description || 'Not available'}</p>
+    <p><strong>Number of people:</strong> {state?.peopleCount || 'Not available'}</p>
+    <p><strong>Location:</strong> {state?.location || 'Not available'}</p>
+    <p><strong>Contact name:</strong> {state?.contactName || 'Not available'}</p>
+    <p><strong>Contact phone:</strong> {state?.contactPhone || 'Not available'}</p>
+    {state?.notes && <p><strong>Additional notes:</strong> {state.notes}</p>}
+  </div>
+</div>
 
         <h2 className="mt-6 text-lg font-semibold text-gray-900">
           What happens next?
